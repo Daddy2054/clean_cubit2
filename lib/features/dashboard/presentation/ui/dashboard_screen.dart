@@ -1,3 +1,4 @@
+import 'package:clean_cubit2/features/dashboard/presentation/ui/widget/bottom_navigation_widget.dart';
 import 'package:flutter/material.dart';
 
 class DashboardScreen extends StatelessWidget {
@@ -5,12 +6,11 @@ class DashboardScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-
-      body: const Column(
+    return const Scaffold(
+      body: Column(
         children: [],
       ),
-      bottomNavigationBar: Row(),
+      bottomNavigationBar: BottomNavigationWidget(),
     );
   }
 }
