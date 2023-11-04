@@ -1,6 +1,7 @@
 import 'package:clean_cubit2/features/dashboard/presentation/controller/dashboard_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../state/dashboard_state.dart';
 
@@ -37,7 +38,9 @@ void _onItemSelected(BuildContext context, int value) {
   context.read<DashboardController>().setPageIndex(value);
   switch (value) {
     case 0:
+        GoRouter.of(context).go('/');
     case 1:
+        GoRouter.of(context).go('/setting');
       break;
     default:
       throw Exception('No item found');

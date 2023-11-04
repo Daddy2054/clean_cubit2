@@ -1,16 +1,20 @@
-import 'package:clean_cubit2/features/dashboard/presentation/ui/widget/bottom_navigation_widget.dart';
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 
+import 'package:clean_cubit2/features/dashboard/presentation/ui/widget/bottom_navigation_widget.dart';
+
 class DashboardScreen extends StatelessWidget {
-  const DashboardScreen({super.key});
+  final Widget child;
+  const DashboardScreen({
+    Key? key,
+    required this.child,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Column(
-        children: [],
-      ),
-      bottomNavigationBar: BottomNavigationWidget(),
+    return Scaffold(
+      body: child,
+      bottomNavigationBar: const BottomNavigationWidget(),
     );
   }
 }
