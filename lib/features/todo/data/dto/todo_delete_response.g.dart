@@ -6,14 +6,14 @@ part of 'todo_delete_response.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_ToDoDeleteResponse _$$_ToDoDeleteResponseFromJson(
+_$ToDoDeleteResponseImpl _$$ToDoDeleteResponseImplFromJson(
         Map<String, dynamic> json) =>
-    _$_ToDoDeleteResponse(
+    _$ToDoDeleteResponseImpl(
       deleted: json['deleted'] as bool? ?? false,
     );
 
-Map<String, dynamic> _$$_ToDoDeleteResponseToJson(
-        _$_ToDoDeleteResponse instance) =>
+Map<String, dynamic> _$$ToDoDeleteResponseImplToJson(
+        _$ToDoDeleteResponseImpl instance) =>
     <String, dynamic>{
       'deleted': instance.deleted,
     };

@@ -62,22 +62,22 @@ class _$ToDoDeleteResponseCopyWithImpl<$Res, $Val extends ToDoDeleteResponse>
 }
 
 /// @nodoc
-abstract class _$$_ToDoDeleteResponseCopyWith<$Res>
+abstract class _$$ToDoDeleteResponseImplCopyWith<$Res>
     implements $ToDoDeleteResponseCopyWith<$Res> {
-  factory _$$_ToDoDeleteResponseCopyWith(_$_ToDoDeleteResponse value,
-          $Res Function(_$_ToDoDeleteResponse) then) =
-      __$$_ToDoDeleteResponseCopyWithImpl<$Res>;
+  factory _$$ToDoDeleteResponseImplCopyWith(_$ToDoDeleteResponseImpl value,
+          $Res Function(_$ToDoDeleteResponseImpl) then) =
+      __$$ToDoDeleteResponseImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({bool deleted});
 }
 
 /// @nodoc
-class __$$_ToDoDeleteResponseCopyWithImpl<$Res>
-    extends _$ToDoDeleteResponseCopyWithImpl<$Res, _$_ToDoDeleteResponse>
-    implements _$$_ToDoDeleteResponseCopyWith<$Res> {
-  __$$_ToDoDeleteResponseCopyWithImpl(
-      _$_ToDoDeleteResponse _value, $Res Function(_$_ToDoDeleteResponse) _then)
+class __$$ToDoDeleteResponseImplCopyWithImpl<$Res>
+    extends _$ToDoDeleteResponseCopyWithImpl<$Res, _$ToDoDeleteResponseImpl>
+    implements _$$ToDoDeleteResponseImplCopyWith<$Res> {
+  __$$ToDoDeleteResponseImplCopyWithImpl(_$ToDoDeleteResponseImpl _value,
+      $Res Function(_$ToDoDeleteResponseImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -85,7 +85,7 @@ class __$$_ToDoDeleteResponseCopyWithImpl<$Res>
   $Res call({
     Object? deleted = null,
   }) {
-    return _then(_$_ToDoDeleteResponse(
+    return _then(_$ToDoDeleteResponseImpl(
       deleted: null == deleted
           ? _value.deleted
           : deleted // ignore: cast_nullable_to_non_nullable
@@ -96,11 +96,11 @@ class __$$_ToDoDeleteResponseCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_ToDoDeleteResponse implements _ToDoDeleteResponse {
-  const _$_ToDoDeleteResponse({this.deleted = false});
+class _$ToDoDeleteResponseImpl implements _ToDoDeleteResponse {
+  const _$ToDoDeleteResponseImpl({this.deleted = false});
 
-  factory _$_ToDoDeleteResponse.fromJson(Map<String, dynamic> json) =>
-      _$$_ToDoDeleteResponseFromJson(json);
+  factory _$ToDoDeleteResponseImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ToDoDeleteResponseImplFromJson(json);
 
   @override
   @JsonKey()
@@ -115,7 +115,7 @@ class _$_ToDoDeleteResponse implements _ToDoDeleteResponse {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ToDoDeleteResponse &&
+            other is _$ToDoDeleteResponseImpl &&
             (identical(other.deleted, deleted) || other.deleted == deleted));
   }
 
@@ -126,13 +126,13 @@ class _$_ToDoDeleteResponse implements _ToDoDeleteResponse {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ToDoDeleteResponseCopyWith<_$_ToDoDeleteResponse> get copyWith =>
-      __$$_ToDoDeleteResponseCopyWithImpl<_$_ToDoDeleteResponse>(
+  _$$ToDoDeleteResponseImplCopyWith<_$ToDoDeleteResponseImpl> get copyWith =>
+      __$$ToDoDeleteResponseImplCopyWithImpl<_$ToDoDeleteResponseImpl>(
           this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ToDoDeleteResponseToJson(
+    return _$$ToDoDeleteResponseImplToJson(
       this,
     );
   }
@@ -140,15 +140,15 @@ class _$_ToDoDeleteResponse implements _ToDoDeleteResponse {
 
 abstract class _ToDoDeleteResponse implements ToDoDeleteResponse {
   const factory _ToDoDeleteResponse({final bool deleted}) =
-      _$_ToDoDeleteResponse;
+      _$ToDoDeleteResponseImpl;
 
   factory _ToDoDeleteResponse.fromJson(Map<String, dynamic> json) =
-      _$_ToDoDeleteResponse.fromJson;
+      _$ToDoDeleteResponseImpl.fromJson;
 
   @override
   bool get deleted;
   @override
   @JsonKey(ignore: true)
-  _$$_ToDoDeleteResponseCopyWith<_$_ToDoDeleteResponse> get copyWith =>
+  _$$ToDoDeleteResponseImplCopyWith<_$ToDoDeleteResponseImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
