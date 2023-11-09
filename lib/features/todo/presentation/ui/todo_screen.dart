@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class ToDoScreen extends StatelessWidget {
   const ToDoScreen({super.key});
@@ -12,6 +13,13 @@ class ToDoScreen extends StatelessWidget {
       ),
       body: const Column(
         children: [],
+      ),
+      floatingActionButton: FloatingActionButton.small(
+        onPressed: () {
+          context.push('/addTodo');
+        },
+        heroTag: 'addTodo',
+        child: const Icon(Icons.add),
       ),
     );
   }
