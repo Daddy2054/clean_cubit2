@@ -32,6 +32,7 @@ class GoRouterProvider {
           },
           routes: [
             GoRoute(
+              parentNavigatorKey:_shellNavigatorKey,
               path: '/',
               name: homeRoute,
               pageBuilder: (context, state) {
@@ -43,6 +44,7 @@ class GoRouterProvider {
               },
               routes: [
                 GoRoute(
+              parentNavigatorKey:_shellNavigatorKey,
                   path: 'addToDo',
                   name: addToDoRoute,
                   builder: (context, state) {
