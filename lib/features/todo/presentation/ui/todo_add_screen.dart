@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../../common/form/custom_text_form_field.dart';
+import '../../../../common/mixin/loading_overlay_mixin.dart';
 import '../../../../common/style/dimens.dart';
 import '../controller/todo_add_controller.dart';
 import '../state/todo_add_state.dart';
-
+import 'package:clean_cubit2/common/mixin/dialog_mixin.dart';
 class ToDoAddScreen extends StatefulWidget {
   const ToDoAddScreen({Key? key}) : super(key: key);
 
@@ -14,7 +16,7 @@ class ToDoAddScreen extends StatefulWidget {
 }
 
 class _ToDoAddScreenState extends State<ToDoAddScreen>
-    // with DialogMixin, LoadingOverlayMixin 
+    with DialogMixin, LoadingOverlayMixin 
     {
   final GlobalKey<FormState> _formKey = GlobalKey();
   final TextEditingController _titleController = TextEditingController();
@@ -48,13 +50,13 @@ class _ToDoAddScreenState extends State<ToDoAddScreen>
             _overlayEntry?.remove();
             _overlayEntry = null;
 
-            // if (state.isAdded) {
-            //   _showSuccessDialog();
-            // }
+            if (state.isAdded) {
+              _showSuccessDialog();
+            }
 
-            // if (state.isLoading) {
-            //   _overlayEntry = showLoadingOverlay(context, _overlayEntry);
-            // }
+            if (state.isLoading) {
+              _overlayEntry = showLoadingOverlay(context, _overlayEntry);
+            }
 
             if (state.errorMsg != null) {
               _showErrorSnackbar(state.errorMsg ?? '');
@@ -181,21 +183,21 @@ class _ToDoAddScreenState extends State<ToDoAddScreen>
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(data)));
   }
 
-  // void _showSuccessDialog() {
-  //   showSuccessDialog(
-  //     context: context,
-  //     title: 'Success',
-  //     msg: 'ToDo Added Successfully',
-  //     btnOkText: 'OK',
-  //     onOkTap: () {
-  //       final navigator = Navigator.of(context, rootNavigator: true);
-  //       if (navigator.canPop()) {
-  //         // pop the dialog
-  //         navigator.pop();
-  //         // pop the route
-  //         context.pop();
-  //       }
-  //     },
-  //   );
-  // }
+  void _showSuccessDialog() {
+    showSuccessDialog(
+      context: context,
+      title: 'Success',
+      msg: 'ToDo Added Successfully',
+      btnOkText: 'OK',
+      onOkTap: () {
+        final navigator = Navigator.of(context, rootNavigator: true);
+        if (navigator.canPop()) {
+          // pop the dialog
+          navigator.pop();
+          // pop the route
+          context.pop();
+        }
+      },
+    );
+  }
 }
