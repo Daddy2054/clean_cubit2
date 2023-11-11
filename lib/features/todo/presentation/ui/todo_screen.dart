@@ -17,7 +17,7 @@ class ToDoScreen extends StatefulWidget {
 
 class _ToDoScreenState extends State<ToDoScreen>
     with LoadingOverlayMixin, RouteAware {
-  // OverlayEntry? _overlayEntry;
+  OverlayEntry? _overlayEntry;
   // final ScrollController _scrollController = ScrollController();
 
   @override
@@ -41,14 +41,14 @@ class _ToDoScreenState extends State<ToDoScreen>
               current.isDeleted != previous.isDeleted;
         },
         listener: (context, state) {
-          // _overlayEntry?.remove();
-          // _overlayEntry = null;
-          // if (state.isLoading) {
-          //   _overlayEntry = showLoadingOverlay(context, _overlayEntry);
-          // }
-          // if (state.isDeleted) {
-          //   _showSnackBar();
-          // }
+          _overlayEntry?.remove();
+          _overlayEntry = null;
+          if (state.isLoading) {
+            _overlayEntry = showLoadingOverlay(context, _overlayEntry);
+          }
+          if (state.isDeleted) {
+            _showSnackBar();
+          }
         },
         child: BlocSelector<ToDoController, ToDoState, List<ToDoItem>>(
           selector: (state) {
@@ -107,5 +107,21 @@ class _ToDoScreenState extends State<ToDoScreen>
         child: const Icon(Icons.add),
       ),
     );
+  }
+
+  void _showSnackBar() {
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text(
+          'ToDo deleted successfully',
+        ),
+      ),
+    );
+  }
+
+  @override
+  void didPopNext() {
+    context.read<ToDoController>().refetchToDos();
+    super.didPopNext();
   }
 }
