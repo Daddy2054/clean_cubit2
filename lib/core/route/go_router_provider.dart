@@ -1,4 +1,3 @@
-import 'package:clean_cubit2/core/service_locator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -7,7 +6,9 @@ import '../../features/dashboard/presentation/ui/dashboard_screen.dart';
 import '../../features/setting/presentation/ui/setting_screen.dart';
 import '../../features/todo/presentation/controller/todo_add_controller.dart';
 import '../../features/todo/presentation/ui/todo_add_screen.dart';
+import '../../features/todo/presentation/ui/todo_detail_screen.dart';
 import '../../features/todo/presentation/ui/todo_screen.dart';
+import '../service_locator.dart';
 import 'route_name.dart';
 
 class GoRouterProvider {
@@ -59,18 +60,17 @@ class GoRouterProvider {
                     );
                   },
                 ),
-
-                // GoRoute(
-                //   path: 'detail/:id',
-                //   name: detailToDoRoute,
-                //   builder: (context, state) {
-                //     final id = int.parse(state.params['id'].toString());
-                //     return ToDoDetailScreen(
-                //       key: state.pageKey,
-                //       id: id,
-                //     );
-                //   },
-                // ),
+                GoRoute(
+                  path: 'detail/:id',
+                  name: detailToDoRoute,
+                  builder: (context, state) {
+                    final id = int.parse(state.pathParameters['id'].toString());
+                    return ToDoDetailScreen(
+                      key: state.pageKey,
+                      id: id,
+                    );
+                  },
+                ),
               ],
             ),
             GoRoute(
