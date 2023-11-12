@@ -144,7 +144,10 @@ class ToDoController extends Cubit<ToDoState> {
     try {
       emit(state.copyWith(isLoading: true));
 
-      final queries = {'id': id.toString(), 'user_id': userId.toString()};
+      final queries = {
+        'id': id.toString(),
+        'user_id': userId.toString(),
+      };
       final result = await _toDoService.deleteToDo(queries);
 
       emit(state.copyWith(
@@ -166,10 +169,16 @@ class ToDoController extends Cubit<ToDoState> {
 
   void setToDoStatus(bool value) {
     emit(state.copyWith(todoStatus: value));
-    setFormData(key: 'status', value: value ? '1' : '0');
+    setFormData(
+      key: 'status',
+      value: value ? '1' : '0',
+    );
   }
 
-  void setFormData({required String key, required dynamic value}) {
+  void setFormData({
+    required String key,
+    required dynamic value,
+  }) {
     emit(state.copyWith(formData: {
       ...state.formData,
       ...{key: value}
@@ -181,16 +190,18 @@ class ToDoController extends Cubit<ToDoState> {
   }
 
   void clearState() {
-    emit(state.copyWith(
-      isLoading: false,
-      isUpdated: false,
-      isDeleted: false,
-      isReadonly: false,
-      todoStatus: false,
-      isFetching: false,
-      isScrolling: false,
-      formData: {},
-      todos: [],///???
-    ));
+    emit(
+      state.copyWith(
+        isLoading: false,
+        isUpdated: false,
+        isDeleted: false,
+        isReadonly: false,
+        todoStatus: false,
+        isFetching: false,
+        isScrolling: false,
+        formData: {},
+      //  todos: [],  //lesson 35.Update ToDo.mp4
+      ),
+    );
   }
 }
