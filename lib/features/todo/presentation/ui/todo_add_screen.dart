@@ -166,7 +166,7 @@ class _ToDoAddScreenState extends State<ToDoAddScreen>
           ),
         ),
       ),
-      floatingActionButton: FloatingActionButton.small(
+      floatingActionButton: FloatingActionButton(
         heroTag: 'saveToDo',
         onPressed: () {
           final isValid = _formKey.currentState?.validate();

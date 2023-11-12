@@ -68,6 +68,8 @@ class ToDoController extends Cubit<ToDoState> {
           currentPage: 0,
           lastPage: 0,
           isLoading: false,
+        isDeleted: false,
+
           isFetching: false),
     );
 
