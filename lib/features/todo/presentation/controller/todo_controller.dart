@@ -50,6 +50,7 @@ class ToDoController extends Cubit<ToDoState> {
           lastPage: result.page.lastPage,
           isLoading: false,
           isFetching: false,
+          isDeleted: false,
         ),
       );
     } on Failure catch (e) {
@@ -68,8 +69,7 @@ class ToDoController extends Cubit<ToDoState> {
           currentPage: 0,
           lastPage: 0,
           isLoading: false,
-        isDeleted: false,
-
+          isDeleted: false,
           isFetching: false),
     );
 
@@ -78,7 +78,10 @@ class ToDoController extends Cubit<ToDoState> {
 
   void getToDo(int id) async {
     try {
-      emit(state.copyWith(isLoading: true));
+      emit(state.copyWith(
+        isLoading: true,
+        isDeleted: false,
+      ));
 
       final result = await _toDoService.getToDo(id);
 
@@ -198,12 +201,12 @@ class ToDoController extends Cubit<ToDoState> {
         isUpdated: false,
         isDeleted: false,
         isReadonly: true,
-       // isReadonly: false,
+        // isReadonly: false,
         todoStatus: false,
         isFetching: false,
         isScrolling: false,
         formData: {},
-     //   todos: [],  //lesson 35.Update ToDo.mp4
+        //   todos: [],  //lesson 35.Update ToDo.mp4
       ),
     );
   }
