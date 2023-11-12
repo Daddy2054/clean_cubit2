@@ -17,8 +17,6 @@ final getIt = GetIt.instance;
 void serviceLocatorInit() {
   getIt.registerSingleton<RouteObserver>(RouteObserver<ModalRoute>());
   getIt.registerFactory(() => GoRouterProvider(getIt.get<RouteObserver>()));
-  //getIt.registerFactory(() => GoRouterProvider());
-
   getIt.registerSingleton<Client>(Client());
 
   //Feature ToDo

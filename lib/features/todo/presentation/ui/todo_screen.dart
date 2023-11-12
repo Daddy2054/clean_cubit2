@@ -1,3 +1,4 @@
+import 'package:clean_cubit2/core/service_locator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -25,7 +26,14 @@ class _ToDoScreenState extends State<ToDoScreen>
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       context.read<ToDoController>().getToDoList();
+      getIt.get<RouteObserver>().subscribe(this, ModalRoute.of(context)!);
     });
+  }
+
+  @override
+  void dispose() {
+    getIt.get<RouteObserver>().unsubscribe(this);
+    super.dispose();
   }
 
   @override
@@ -102,7 +110,7 @@ class _ToDoScreenState extends State<ToDoScreen>
           },
         ),
       ),
-      floatingActionButton: FloatingActionButton.small(
+      floatingActionButton: FloatingActionButton(
         onPressed: () {
           context.push('/addTodo');
         },
