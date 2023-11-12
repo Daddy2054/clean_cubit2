@@ -195,12 +195,13 @@ class ToDoController extends Cubit<ToDoState> {
         isLoading: false,
         isUpdated: false,
         isDeleted: false,
-        isReadonly: false,
+        isReadonly: true,
+       // isReadonly: false,
         todoStatus: false,
         isFetching: false,
         isScrolling: false,
         formData: {},
-      //  todos: [],  //lesson 35.Update ToDo.mp4
+     //   todos: [],  //lesson 35.Update ToDo.mp4
       ),
     );
   }
