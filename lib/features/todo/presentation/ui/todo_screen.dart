@@ -19,7 +19,7 @@ class ToDoScreen extends StatefulWidget {
 class _ToDoScreenState extends State<ToDoScreen>
     with LoadingOverlayMixin, RouteAware {
   OverlayEntry? _overlayEntry;
-  // final ScrollController _scrollController = ScrollController();
+  final ScrollController _scrollController = ScrollController();
 
   @override
   void initState() {
@@ -27,6 +27,19 @@ class _ToDoScreenState extends State<ToDoScreen>
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       context.read<ToDoController>().getToDoList();
       getIt.get<RouteObserver>().subscribe(this, ModalRoute.of(context)!);
+    });
+    _scrollController.addListener(() {
+      final maxScrollExtent = _scrollController.position.maxScrollExtent;
+
+      if (_scrollController.position.pixels >= maxScrollExtent) {
+        final currentPage = context.read<ToDoController>().state.currentPage;
+        final lastPage = context.read<ToDoController>().state.lastPage;
+
+        if (currentPage < lastPage) {
+          context.read<ToDoController>().setIsScrolling(true);
+          context.read<ToDoController>().getToDoList();
+        }
+      }
     });
   }
 
@@ -64,6 +77,7 @@ class _ToDoScreenState extends State<ToDoScreen>
           },
           builder: (context, state) {
             return ListView.builder(
+              controller: _scrollController,
               itemCount: state.length,
               itemBuilder: (context, index) {
                 final todo = state[index];
