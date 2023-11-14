@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../features/auth/signup/presentation/controller/sign_up_controller.dart';
+import '../../features/auth/signup/presentation/ui/sign_up_screen.dart';
 import '../../features/dashboard/presentation/ui/dashboard_screen.dart';
 import '../../features/setting/presentation/ui/setting_screen.dart';
 import '../../features/todo/presentation/controller/todo_add_controller.dart';
@@ -23,8 +25,34 @@ class GoRouterProvider {
   GoRouter goRouter() {
     return GoRouter(
       navigatorKey: _rootNavigatorKey,
-      initialLocation: '/',
+      initialLocation: '/login',
       routes: [
+        GoRoute(
+          path: '/login',
+          name: loginRoute,
+        //   builder: (context, state) {
+            // return BlocProvider(
+            //   create: (context) => getIt.get<LoginController>(),
+            // child: LoginScreen(
+            //   key: state.pageKey,
+            // ),
+            // );
+          // },
+          routes: [
+            GoRoute(
+              path: 'signUp',
+              name: signUpRoute,
+              builder: (context, state) {
+                return BlocProvider(
+                  create: (context) => getIt.get<SignUpController>(),
+                  child: SignUpScreen(
+                    key: state.pageKey,
+                  ),
+                );
+              },
+            ),
+          ],
+       ),
         ShellRoute(
           navigatorKey: _shellNavigatorKey,
           observers: [_shellRouteObserver],
