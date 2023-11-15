@@ -25,11 +25,11 @@ class GoRouterProvider {
   GoRouter goRouter() {
     return GoRouter(
       navigatorKey: _rootNavigatorKey,
-      initialLocation: '/login',
+      initialLocation: '/signUp',
       routes: [
-        GoRoute(
-          path: '/login',
-          name: loginRoute,
+        // GoRoute(
+        //   path: '/login',
+        //   name: loginRoute,
         //   builder: (context, state) {
             // return BlocProvider(
             //   create: (context) => getIt.get<LoginController>(),
@@ -38,9 +38,9 @@ class GoRouterProvider {
             // ),
             // );
           // },
-          routes: [
+          // routes: [
             GoRoute(
-              path: 'signUp',
+              path: '/signUp',
               name: signUpRoute,
               builder: (context, state) {
                 return BlocProvider(
@@ -51,8 +51,8 @@ class GoRouterProvider {
                 );
               },
             ),
-          ],
-       ),
+      //     ],
+      //  ),
         ShellRoute(
           navigatorKey: _shellNavigatorKey,
           observers: [_shellRouteObserver],
