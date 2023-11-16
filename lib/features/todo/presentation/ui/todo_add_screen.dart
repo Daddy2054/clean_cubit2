@@ -8,6 +8,7 @@ import '../../../../common/style/dimens.dart';
 import '../controller/todo_add_controller.dart';
 import '../state/todo_add_state.dart';
 import 'package:clean_cubit2/common/mixin/dialog_mixin.dart';
+
 class ToDoAddScreen extends StatefulWidget {
   const ToDoAddScreen({Key? key}) : super(key: key);
 
@@ -16,8 +17,7 @@ class ToDoAddScreen extends StatefulWidget {
 }
 
 class _ToDoAddScreenState extends State<ToDoAddScreen>
-    with DialogMixin, LoadingOverlayMixin 
-    {
+    with DialogMixin, LoadingOverlayMixin {
   final GlobalKey<FormState> _formKey = GlobalKey();
   final TextEditingController _titleController = TextEditingController();
   final TextEditingController _bodyController = TextEditingController();
@@ -148,7 +148,7 @@ class _ToDoAddScreenState extends State<ToDoAddScreen>
                     buildWhen: (previous, current) {
                       return current.todoStatus != previous.todoStatus;
                     },
-                    builder: (context, state) {                     
+                    builder: (context, state) {
                       return SwitchListTile.adaptive(
                         title: const Text('Status'),
                         value: state.todoStatus,

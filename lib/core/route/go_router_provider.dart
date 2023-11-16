@@ -31,28 +31,28 @@ class GoRouterProvider {
         //   path: '/login',
         //   name: loginRoute,
         //   builder: (context, state) {
-            // return BlocProvider(
-            //   create: (context) => getIt.get<LoginController>(),
-            // child: LoginScreen(
-            //   key: state.pageKey,
-            // ),
-            // );
-          // },
-          // routes: [
-            GoRoute(
-              path: '/signUp',
-              name: signUpRoute,
-              builder: (context, state) {
-                return BlocProvider(
-                  create: (context) => getIt.get<SignUpController>(),
-                  child: SignUpScreen(
-                    key: state.pageKey,
-                  ),
-                );
-              },
-            ),
-      //     ],
-      //  ),
+        // return BlocProvider(
+        //   create: (context) => getIt.get<LoginController>(),
+        // child: LoginScreen(
+        //   key: state.pageKey,
+        // ),
+        // );
+        // },
+        // routes: [
+        GoRoute(
+          path: '/signUp',
+          name: signUpRoute,
+          builder: (context, state) {
+            return BlocProvider(
+              create: (context) => getIt.get<SignUpController>(),
+              child: SignUpScreen(
+                key: state.pageKey,
+              ),
+            );
+          },
+        ),
+        //     ],
+        //  ),
         ShellRoute(
           navigatorKey: _shellNavigatorKey,
           observers: [_shellRouteObserver],

@@ -38,9 +38,9 @@ void _onItemSelected(BuildContext context, int value) {
   context.read<DashboardController>().setPageIndex(value);
   switch (value) {
     case 0:
-        GoRouter.of(context).go('/');
+      GoRouter.of(context).go('/');
     case 1:
-        GoRouter.of(context).go('/setting');
+      GoRouter.of(context).go('/setting');
       break;
     default:
       throw Exception('No item found');

@@ -6,7 +6,7 @@ import '../../controller/sign_up_controller.dart';
 
 class SignUpButton extends StatelessWidget {
   final VoidCallback onPressed;
-  const SignUpButton({super.key,required this.onPressed});
+  const SignUpButton({super.key, required this.onPressed});
 
   @override
   Widget build(BuildContext context) {
