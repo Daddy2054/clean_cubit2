@@ -7,7 +7,8 @@ import '../state/login_state.dart';
 class LoginController extends Cubit<LoginState> {
   final ILoginService _loginService;
 
-  LoginController(super.initialState, this._loginService);
+  LoginController( this._loginService):super(const LoginState());
+
 
   void login() async {
     try {

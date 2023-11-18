@@ -5,9 +5,9 @@ import 'ilogin_api_service.dart';
 
 class LoginApiService with UriMixin implements ILoginApiService {
   final http.Client client;
-  LoginApiService({
-    required this.client,
-  });
+  LoginApiService(
+   this.client,
+  );
 
   @override
   Future<http.Response> login(Map<String, dynamic> body) async {

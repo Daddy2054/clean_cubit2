@@ -2,6 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:http/http.dart';
 
+import '../features/auth/login/application/ilogin_service.dart';
+import '../features/auth/login/application/login_service.dart';
+import '../features/auth/login/data/api/ilogin_api_service.dart';
+import '../features/auth/login/data/api/login_api_service.dart';
+import '../features/auth/login/data/repository/ilogin_repository.dart';
+import '../features/auth/login/data/repository/login_repository.dart';
+import '../features/auth/login/presentation/controller/login_controller.dart';
 import '../features/auth/signup/application/isign_up_service.dart';
 import '../features/auth/signup/application/sign_up_service.dart';
 import '../features/auth/signup/data/api/isign_up_api_service.dart';
@@ -87,18 +94,18 @@ void serviceLocatorInit() {
     ),
   );
 
-  // //Feature Login
-  // getIt.registerLazySingleton<ILoginApiService>(
-  //     () => LoginApiService(getIt<Client>()));
-  // getIt.registerLazySingleton<ILoginRepository>(
-  //     () => LoginRepository(getIt<ILoginApiService>()));
-  // getIt.registerLazySingleton<ILoginService>(
-  //     () => LoginService(getIt<ILoginRepository>()));
+  //Feature Login
+  getIt.registerLazySingleton<ILoginApiService>(
+      () => LoginApiService(getIt<Client>()));
+  getIt.registerLazySingleton<ILoginRepository>(
+      () => LoginRepository(getIt<ILoginApiService>()));
+  getIt.registerLazySingleton<ILoginService>(
+      () => LoginService(getIt<ILoginRepository>()));
 
-  // //  Login Controller
-  // getIt.registerFactory<LoginController>(() => LoginController(
-  //       getIt.get<ILoginService>(),
-  //     ));
+  //  Login Controller
+  getIt.registerFactory<LoginController>(() => LoginController(
+        getIt.get<ILoginService>(),
+      ));
 
   // //Feature setting
 
