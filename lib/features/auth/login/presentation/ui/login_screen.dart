@@ -41,17 +41,21 @@ class _LoginScreenState extends State<LoginScreen> {
             key: _formKey,
             child: BlocListener<LoginController, LoginState>(
               listenWhen: (previous, current) {
-                return current.isLoggedIn != previous.isLoggedIn;
+                return current.isLoggedIn != previous.isLoggedIn ||
+                    current.errorMsg != previous.errorMsg;
               },
               listener: (context, state) {
                 if (state.isLoggedIn) {
                   context.go('/');
                 }
+                if (state.errorMsg != null) {
+                  _showSnackBar(state.errorMsg ?? '');
+                }
               },
               child: Padding(
                 padding: const EdgeInsets.all(kMedium),
                 child: Column(
-      //            mainAxisAlignment: MainAxisAlignment.center,
+                  //            mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     const SizedBox(
                       height: kMedium,
@@ -117,6 +121,14 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
           ),
         ),
+      ),
+    );
+  }
+
+  void _showSnackBar(String errorMsg) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(errorMsg),
       ),
     );
   }
